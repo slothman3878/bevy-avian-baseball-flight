@@ -1,34 +1,7 @@
 use crate::*;
 
-#[derive(Debug, Clone, Copy, Reflect)]
-pub(crate) enum GyroPole {
-    Right,
-    Left,
-}
-
-impl Default for GyroPole {
-    fn default() -> Self {
-        Self::Right
-    }
-}
-
-#[derive(Debug, Reflect, Copy, Clone)]
-pub(crate) struct Tilt(f32);
-impl Tilt {
-    pub(crate) fn from_hour_mintes(h: i8, m: i8) -> Self {
-        assert!(h <= 12 && h > 0);
-        let rad_hrs = (h - 3) as f32 * PI_32 / 6.;
-        let rad_mins = m as f32 * PI_32 / 360.;
-        Self(rad_hrs + rad_mins)
-    }
-
-    pub(crate) fn get(&self) -> f32 {
-        self.0
-    }
-}
-
 #[derive(Debug, Component, Reflect, Clone, Default)]
-pub(crate) struct BaseballFlightState {
+pub struct BaseballFlightState {
     pub translation: DVec3,
     pub v: DVec3,
     pub spin: DVec3,

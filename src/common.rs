@@ -7,8 +7,8 @@ pub(crate) mod constants {
     pub(crate) const M_TO_FEET: f32 = 3.28084;
     pub(crate) const KG_TO_IBS: f32 = 2.20462;
 
-    pub(crate) const RPM_TO_RADS: f64 = 2. * PI_64 / 60.;
-    pub(crate) const MPH_TO_FTS: f64 = 1.467;
+    pub const RPM_TO_RADS: f32 = 2. * PI_32 / 60.;
+    pub const MPH_TO_FTS: f32 = 1.467;
 
     pub(crate) const MASS: f32 = 0.145; // in kg
     pub(crate) const RADIUS: f32 = 0.037; // in m
@@ -34,26 +34,23 @@ pub(crate) mod constants {
 pub(crate) mod utils {
     use super::*;
 
-    pub(crate) fn swap_coordinates_vec3(vec: &Vec3) -> Vec3 {
+    pub fn swap_coordinates_vec3(vec: &Vec3) -> Vec3 {
         Vec3::new(-vec.x, vec.z, vec.y) // maybe should consider changing the units as well?
     }
 
-    pub(crate) fn swap_coordinates_dvec3(vec: &DVec3) -> DVec3 {
+    pub fn swap_coordinates_dvec3(vec: &DVec3) -> DVec3 {
         DVec3::new(-vec.x, vec.z, vec.y) // maybe should consider changing the units as well?
     }
 
-    pub(crate) fn kg_to_pound(weight: f32) -> f32 {
+    pub fn kg_to_pound(weight: f32) -> f32 {
         weight * KG_TO_IBS
     }
 
-    pub(crate) fn pound_to_kg(weight: f32) -> f32 {
+    pub fn pound_to_kg(weight: f32) -> f32 {
         weight / KG_TO_IBS
     }
 
-    /// The selected code is a function named swap_coordinates that takes a reference to a Vec3 representing a 3D translation and returns a new Vec3 with the coordinates swapped according to the coordinate systems used by the Bevy game engine and the aerodynamics module.
-    /// In the Bevy coordinate system, the right-handed coordinate system is used with the y-axis pointing up. On the other hand, the aerodynamics module uses a left-handed coordinate system with the z-axis pointing up. The swap_coordinates function swaps the x and z coordinates of the input translation vector to align it with the aerodynamics module's coordinate system.
-    /// The function is marked as pub(crate) which means it is publicly accessible within the current crate. It is also marked as pub(crate) mod prelude which means it is re-exported in the prelude module for convenience. This allows other modules within the same crate to use the swap_coordinates function without needing to import it explicitly.
-    pub(crate) trait BaseballCoordinateSystem {
+    pub trait BaseballCoordinateSystem {
         fn from_bevy_to_baseball_coord(&self) -> Self;
         fn from_baseball_coord_to_bevy(&self) -> Self;
     }

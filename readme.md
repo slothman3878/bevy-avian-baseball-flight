@@ -8,7 +8,7 @@ Send the `DisableAerodynamicsEvent` to disable the simulated forces.
 
 Note that the simulations are performed using imperial units instead and also its own coordinate system and NOT bevy's.
 
-## TODO:
+## TODO
 
 -[ ] features for each simulation option
 -[ ] simulate in metric units

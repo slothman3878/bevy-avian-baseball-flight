@@ -22,7 +22,10 @@ bevy = { version = "^0.14.0", default-features = false, features = [
   "bevy_pbr",
   "bevy_scene",
   "x11",
+  "tonemapping_luts",
 ] }
 
 [dev-dependencies]
 log = "^0.4.22"
+blenvy = { git = "https://github.com/kaosat-dev/Blenvy/", branch = "blenvy", version = "^0.1.0-alpha.1" }
+bevy_flycam = "^0.14.1"

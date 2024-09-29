@@ -62,6 +62,7 @@ pub(crate) fn _apply_physics_option_3(
     let delta_t = time_fixed.delta_seconds_f64() * time_physics.relative_speed_f64();
     for (mut state, transform, l_velo, mut force) in &mut query_baseball {
         if state.active {
+            info!("aerodynamics active");
             let a = state.update_state_and_get_acceleration(
                 &baseball_plugin_config,
                 transform
@@ -92,15 +93,16 @@ pub(crate) fn activate_aerodynamics(
     mut ev_post_activate_aerodynamics_event: EventWriter<PostActivateAerodynamicsEvent>,
 ) {
     for ev in ev_activate_aerodynamics_event.read() {
-        if let Ok((mut ball, mut force, mut gravity_scale, transform, l_velo, a_velo)) =
+        if let Ok((mut state, mut force, mut gravity_scale, transform, l_velo, a_velo)) =
             ball_physics_query.get_mut(ev.entity)
         {
-            if !ball.active {
+            if !state.active {
+                info!("hello???");
                 // just in case
                 force.set_force(Vec3::ZERO);
                 gravity_scale.0 = 0.;
                 //
-                *ball = BaseballFlightState::from_params(
+                *state = BaseballFlightState::from_params(
                     transform
                         .translation
                         .from_bevy_to_baseball_coord()
