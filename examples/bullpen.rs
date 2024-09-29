@@ -106,11 +106,14 @@ fn spawn_ball(
     let entity = commands
         .spawn((
             Name::new("ball"),
+            //
             BaseballFlightBundle::default(),
+            //
             ExternalForce::new(Vec3::ZERO),
             Transform::from_translation(Vec3::new(0.48, 1.82, 16.764)),
             LinearVelocity((-Vec3::Y * velocity).from_baseball_coord_to_bevy()),
             AngularVelocity(spin.from_baseball_coord_to_bevy()),
+            //
             Restitution {
                 coefficient: 0.546,
                 combine_rule: CoefficientCombine::Min,
