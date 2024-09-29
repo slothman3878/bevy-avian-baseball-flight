@@ -1,6 +1,6 @@
 [package]
 name = "bevy-avian-baseball-flight"
-version = "0.0.1"
+version = "0.0.1-alpha.1"
 edition = "2021"
 exclude = ["/assets/", "/.github/"]
 keywords = ["bevy", "avian", "baseball", "aerodynamics", "baseball-flight"]
