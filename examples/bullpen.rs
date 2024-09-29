@@ -117,7 +117,7 @@ fn spawn_ball(
             },
         ))
         .id();
-    info!("entity: {:?}", entity);
+
     ev_activate_aerodynamics.send(ActivateAerodynamicsEvent {
         entity,
         seam_y_angle: 0.,

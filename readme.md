@@ -10,6 +10,6 @@ Note that the simulations are performed using imperial units instead and also it
 
 ## TODO
 
--[ ] features for each simulation option
--[ ] simulate in metric units
--[ ] simulate in bevy coordinate system
+- [ ] features for each simulation option
+- [ ] simulate in metric units
+- [ ] simulate in bevy coordinate system
