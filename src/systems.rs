@@ -107,7 +107,7 @@ pub(crate) fn activate_aerodynamics(
                         .from_bevy_to_baseball_coord()
                         .as_dvec3(),
                     l_velo.0.from_bevy_to_baseball_coord().as_dvec3(),
-                    a_velo.0.as_dvec3(),
+                    a_velo.0.from_bevy_to_baseball_coord().as_dvec3(),
                     ev.seam_y_angle,
                     ev.seam_z_angle,
                 );
